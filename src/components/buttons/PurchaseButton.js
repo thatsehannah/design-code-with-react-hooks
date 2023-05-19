@@ -7,8 +7,14 @@ const PurchaseButton = ({ title, subtitle }) => {
   return (
     <Link to="/page-2">
       <Wrapper>
-        <Title>{title || "Get Pro Access"}</Title>
-        <Subtitle>{subtitle || "$19 per month"}</Subtitle>
+        <IconWrapper>
+          <Icon src="/images/icons/credit.svg" />
+          <Ring src="images/icons/icon-ring.svg" />
+        </IconWrapper>
+        <TextWrapper>
+          <Title>{title || "Get Pro Access"}</Title>
+          <Subtitle>{subtitle || "$19 per month"}</Subtitle>
+        </TextWrapper>
       </Wrapper>
     </Link>
   )
@@ -25,6 +31,17 @@ const Wrapper = styled.div`
     0px 20px 40px rgba(23, 0, 102, 0.2),
     inset 0px 0px 0px 0.5px rgba(255, 255, 255, 0.5);
   border-radius: 20px;
+  display: grid;
+  grid-template-columns: 53px auto;
+
+  //use align-items (and justify-items) for containers that have multiple columns and/or rows. Use align-content (and justify-content) for containers that have a single column or row
+  align-items: center;
+  gap: 20px;
+`
+
+const TextWrapper = styled.div`
+  display: grid;
+  gap: 4px;
 `
 
 const Title = styled(Caption2)`
@@ -34,4 +51,28 @@ const Title = styled(Caption2)`
 const Subtitle = styled(SmallText)`
   color: black;
   opacity: 0.7;
+`
+
+const IconWrapper = styled.div`
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(200.44deg, #4316db 13.57%, #9076e7 98.38%);
+  border-radius: 50%;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-self: center;
+  position: relative;
+`
+
+const Icon = styled.img`
+  width: 29px;
+  height: 29px;
+`
+
+const Ring = styled.img`
+  //position: absolute will always take into consideration the closest container that has a position: relative property
+  position: absolute;
+  top: -15px;
+  left: -16px;
 `
