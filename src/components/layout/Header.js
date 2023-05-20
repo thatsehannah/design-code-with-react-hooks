@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { menuData } from "../../data/menuData"
 import MenuButton from "../buttons/MenuButton"
 import { Link } from "gatsby"
+import MenuTooltip from "../tooltips/MenuTooltip"
 
 const Header = () => {
   return (
@@ -15,6 +16,7 @@ const Header = () => {
           <MenuButton key={index} item={item} />
         ))}
       </MenuWrapper>
+      <MenuTooltip />
     </Wrapper>
   )
 }
