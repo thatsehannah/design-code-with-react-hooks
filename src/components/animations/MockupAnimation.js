@@ -71,7 +71,6 @@ const Wrapper = styled.div`
     box-shadow: 0px 16.3881px 32.7761px rgba(99, 30, 187, 0.5),
       inset 0px 0px 0px 0.5px rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(21.8507px);
-
     border-radius: 16px;
   }
 
@@ -93,8 +92,6 @@ const Wrapper = styled.div`
     box-shadow: 0px 8.19119px 16.3824px rgba(0, 0, 0, 0.1),
       0px 16.3824px 32.7648px rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(21.8432px);
-    /* Note: backdrop-filter has minimal browser support */
-
     border-radius: 16.3824px;
   }
 
@@ -108,8 +105,6 @@ const Wrapper = styled.div`
     background: url("/images/animations/mockup3.svg"), rgba(23, 12, 61, 0.5);
     border: 0.342305px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(27.3844px);
-    /* Note: backdrop-filter has minimal browser support */
-
     border-radius: 6.8461px;
   }
 
@@ -124,8 +119,6 @@ const Wrapper = styled.div`
     border: 0.5px solid rgba(255, 255, 255, 0.2);
     box-sizing: border-box;
     backdrop-filter: blur(27.3844px);
-    /* Note: backdrop-filter has minimal browser support */
-
     border-radius: 14px;
   }
 
@@ -140,8 +133,6 @@ const Wrapper = styled.div`
     border: 0.5px solid rgba(255, 255, 255, 0.2);
     box-sizing: border-box;
     backdrop-filter: blur(27.3844px);
-    /* Note: backdrop-filter has minimal browser support */
-
     border-radius: 14px;
   }
 `
