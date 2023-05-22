@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import { menuData } from "../../data/menuData"
 import MenuButton from "../buttons/MenuButton"
@@ -7,18 +7,40 @@ import MenuTooltip from "../tooltips/MenuTooltip"
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const ref = useRef()
+  const tooltipRef = useRef()
 
   const handleClick = event => {
     event.preventDefault()
     setIsOpen(!isOpen)
   }
 
+  const handleClickOutside = event => {
+    if (
+      ref.current &&
+      !ref.current.contains(event.target) &&
+      !tooltipRef.current.contains(event.target)
+    ) {
+      console.log("Document is clicked")
+      setIsOpen(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside)
+
+    //unmounts the event listener for single page apps so they don't run multiple times
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
+
   return (
     <Wrapper>
       <Link to="/">
         <img src="/images/logos/logo.svg" alt="logo" />
       </Link>
-      <MenuWrapper count={menuData.length}>
+      <MenuWrapper count={menuData.length} ref={ref}>
         {menuData.map((item, index) =>
           item.link === "/account" ? (
             <MenuButton key={index} item={item} onClick={e => handleClick(e)} />
@@ -29,10 +51,13 @@ const Header = () => {
         <HamburgerWrapper>
           <MenuButton
             item={{ title: "", icon: "/images/icons/hamburger.svg", link: "" }}
+            onClick={e => handleClick(e)}
           />
         </HamburgerWrapper>
       </MenuWrapper>
-      <MenuTooltip isOpen={isOpen} />
+      <div ref={tooltipRef}>
+        <MenuTooltip isOpen={isOpen} />
+      </div>
     </Wrapper>
   )
 }
